@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>Week 3: Javascript, Day 1</title>
+  
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      
+      <!-- ------------- -->
+      <section class="title-slide">
+        <h3 class="title-text">JAVASCRIPT</h3>
+        <div class="sub-head">
+          <div class="sub-head-text"><span>09.25.18 - Day 1</span></div>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Get the code for today's class</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <span>Clone the repo <a href="https://github.com/rose-water/ga-js-day-1" target="_blank">here</a></span>
+        </div>
+      </section>
+      
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Agenda</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>what we're doing today:</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>Javascript in the Wild</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Variables, Scoping, & Control Flow</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Objects - A More Detailed Overview</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Events & Interactivity</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Arrays - A More Detailed Overview</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Dev Tools: Debugging in the Console</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>HTML5 Canvas API</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>2D Drawing with HTML5 Canvas</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Using Libraries</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>What's ES6?</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Javascript in the Wild</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            Audiovisual Experiences
+          </div>
+        </div>
+        <div class="child-slide-body">
+          +<span><a href="https://patatap.com/" target="_blank">Patatap</a></span>
+          +<span><a href="https://musiclab.chromeexperiments.com/Song-Maker/" target="_blank">Chrome Experiments - Song Maker</a></span>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Javascript in the Wild</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            2D & 3D
+          </div>
+        </div>
+        <div class="child-slide-body">
+          +<span><a href="https://cabbi.bo/light/" target="_blank">Cabbibo - Light</a></span>
+          +<span><a href="https://cabbi.bo/enough/" target="_blank">Cabbibo - Enough</a></span>
+          +<span><a href="https://jayweeks.com/medusae/" target="_blank">Jay Weeks - Medusae</a></span>
+          +<span><a href="https://demo.marpi.pl/archan/eutow/" target="_blank">Marpi Demos</a></span>
+          +<span><a href="https://jasfar.github.io/wildflowers/" target="_blank">Jason Farwell - Wildflowers</a></span>  
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Javascript in the Wild</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            Machine Learning
+          </div>
+        </div>
+        <div class="child-slide-body">
+          +<span><a href="https://cvalenzuela.github.io/Selected_Stories/" target="_blank">Cristóbal Valenzuela - Selected Stories</a></span>
+          +<span><a href="https://magenta.tensorflow.org/demos/performance_rnn/index.html" target="_blank">Performance RNN</a></span>
+          +<span><a href="https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5" target="_blank">Real-Time Human Pose Estimation</a></span>
+        </div>
+      </section>
+      
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Javascript Fundamentals</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Data types - Primitives</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>Variables can hold any data, making Javascript a 'weakly typed' language </span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/04-js-primitives.html --&gt;                            
+
+                    &lt;!-- Strings --&gt;
+                    let myMsg = "Hello, World!";
+
+                    &lt;!-- Numbers --&gt;
+                    let myPhoneNum = 123456789;
+                    myPhoneNum = "123456789";
+
+                    &lt;!-- Booleans --&gt;
+                    let isCatLady = true;
+
+                    &lt;!-- Null: is a value! --&gt;
+                    let age = null;
+
+                    &lt;!-- Undefined --&gt;
+                    let a;
+                    alert(a);
+                  </code>
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+     <!-- END SLIDES -->
+    </div>
+  </div>
+</body>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+  // ---------------------------------------------
+  init();
+ 
+  // ---------------------------------------------
+  function init() {
+    Reveal.initialize({
+      dependencies: [
+      { 
+        src: 'plugin/highlight/highlight.js', 
+        async: true, 
+        callback: function() { hljs.initHighlightingOnLoad(); } 
+      }
+      ]
+    });
+    
+    Reveal.configure({
+      slideNumber: true,
+      slideNumber: 'c/t'
+    });
+  
+  }
+</script>
+
+</html>
