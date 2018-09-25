@@ -69,7 +69,7 @@
             </li>
             <li>
               <div class="list-item-container">
-                +<span>Events & Interactivity</span>
+                +<span>Event Handling & Interactivity</span>
               </div>
             </li>
             <li>
@@ -421,7 +421,7 @@
             </li>
             <li>
               <div class="list-item-container">
-                +<span><a href="https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d" target="_blank">Simplify your JS - Use map(), reduce() and filter()</a></span>
+                +<span class="reading-indicator">REFERENCE: </span><a href="https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d" target="_blank">Simplify your JS - Use map(), reduce() and filter()</a>
               </div>
             </li>
           </ul>
@@ -591,7 +591,7 @@
             </li>
             <li>
               <div class="list-item-container">
-                +<span>MDN Web Docs: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Console" target="_blank"><code>console</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank"><code>document</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" target="_blank"><code>window</code></a></span>
+                  +<span class="reading-indicator">REFERENCE: </span>MDN Web Docs: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Console" target="_blank"><code>console</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank"><code>document</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window" target="_blank"><code>window</code></a></span>
               </div>
             </li>
             <li>
@@ -621,20 +621,41 @@
   
       <!-- ------------- -->
       <section class="child-slide">
-        <h5>EventListeners & Interactivity</h5>
+        <h5>Event Handling & Interactivity</h5>
         <div class="sub-head">
           <div class="sub-head-text">
             <span>Web API Built-In Functions</span>
           </div>
         </div>
         <div class="child-slide-body">
-          TODO: info about eventlisteners here
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>Events are what enables interactivity on the web</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span><code>onchange, onkeydown, onmouseover, onsubmit, onresize</code></span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span class="reading-indicator">REFERENCE: </span><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick" target="_blank">MDN Web Docs: GlobalEventHandlers</a>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>* there is a difference between event handlers & event listeners that we won't get into</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
       <!-- ------------- -->
       <section class="child-slide">
-        <h5>EventListeners & Interactivity</h5>
+        <h5>Event Handling & Interactivity</h5>
         <div class="sub-head">
           <div class="sub-head-text">
             <span>Web API Built-In Functions</span>
@@ -643,7 +664,7 @@
         <div class="child-slide-body">
           <pre>
             <code data-trim data-noescape>
-              &lt;body onload=&quot;init();&quot;&gt;
+              &lt;body <mark>onload</mark>=&quot;init();&quot;&gt;
                 &lt;div id=&quot;interactive-div&quot;&gt;
                   &lt;span id=&quot;click-text&quot;&gt;Click to change my color!&lt;/span&gt;
                 &lt;/div&gt;
@@ -658,7 +679,7 @@
 
               function init() {
                 elem = document.getElementById('interactive-div');
-                elem.onclick = sayHello;
+                elem.<mark>onclick</mark> = sayHello;
               }
               
               function sayHello() {
