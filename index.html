@@ -54,7 +54,7 @@
             </li>
             <li>
               <div class="list-item-container">
-                +<span>Variables: Scoping & Control Flow</span>
+                +<span>Variable Scope</span>
               </div>
             </li>
             <li>
@@ -74,7 +74,7 @@
             </li>
             <li>
               <div class="list-item-container">
-                +<span>Dev Tools: Debugging in the Console</span>
+                +<span>BREAK</span>
               </div>
             </li>
             <li>
@@ -89,7 +89,7 @@
             </li>
             <li>
               <div class="list-item-container">
-                +<span>ES6 - What is it?</span>
+                +<span>In Class Exercises</span>
               </div>
             </li>
           </ul>
@@ -190,13 +190,136 @@
 
       <!-- ------------- -->
       <section class="child-slide">
-        <h5>Variables</h5>
+        <h5>Variable Scope</h5>
         <div class="sub-head">
           <div class="sub-head-text">
-            <span>Scoping & Control Flow</span>
+            <span>Reassignment</span>
           </div>
         </div>
         <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>Be careful of where you reassign variables to new values</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/01-js-variables.html --&gt;                            
+                    let name = "Erwin Smith";
+
+                    function greetCommander() {
+                      console.log("Hi, " + name);
+                    }
+
+                    name = "Hanje Zoe";
+
+                    &lt;!-- What will we see in the console? --&gt;
+                    greetCommander(); 
+                  </code>
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Variable Scope</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Local scope</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>Variables are scoped to where they are defined</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>In this case, <code>song</code> and <code>musicalArtistFemale</code> are created inside <code>createCollab()</code></span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/02-js-scoping.html --&gt;                            
+                    let musicalArtistMale = "Andrew Bird";
+
+                    function createCollab() {
+                      let song = "Left Handed Kisses";
+                      let musicalArtistFemale = "Fiona Apple";
+                      console.log("\"" + song + "\" by " + musicalArtistMale + " feat. " + musicalArtistFemale);
+                    }
+                    
+                    createCollab();
+
+                    &lt;!-- This won't work. Why? --&gt;
+                    console.log(musicalArtistFemale);
+                  </code>
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Variable Scope</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span><code>let</code> vs <code>var</code></span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span><code>var</code> is from the older js days</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>However you'll still see <code>var</code> quite often, so you should know how it differs from <code>let</code></span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/03-js-scoping-let-var.html --&gt;                            
+                    function sayHelloVar() {
+                      if (true) {
+                        var phraseA = "Hello";
+                      }
+                      console.log("[ sayHelloVar() ] " + phraseA); 
+                    }
+              
+                    function sayHelloLet() {
+                      if (true) {
+                        let phraseB = "Hello";
+                      }
+                      console.log("[ sayHelloLet() ] " + phraseB); 
+                    }
+                    
+                    &lt;!-- This works! --&gt; 
+                    sayHelloVar();
+                    
+                    &lt;!-- This won't work. Why? --&gt;
+                    sayHelloLet();
+                  </code>
+                </pre>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -205,10 +328,153 @@
         <h5>Arrays</h5>
         <div class="sub-head">
           <div class="sub-head-text">
-            <span>A More Detailed Overview</span>
+            <span>Adding and removing</span>
           </div>
         </div>
         <div class="child-slide-body">
+          <pre>
+            <code data-trim data-noescape>
+              &lt;!-- /exercises/04-js-array-add-remove.html --&gt;                            
+              let fruits = ["Granny Smith Apple", "Honeycrisp Apple",  "Fiji Apple"  ];
+              
+              &lt;!-- push() adds to the end of the array --&gt;
+              fruits.push("Gala Apple");
+
+              &lt;!-- pop() removes from the end of an array --&gt;
+              fruits.pop();
+
+              &lt;!-- unshift adds to the beginning of an array --&gt;
+              fruits.unshift("Jazz Apple");
+
+              &lt;!-- 
+                splice() can add and remove at specified indices
+                here is an example of removing at an index
+                say we want to remove "Honeycrisp Apple"
+                first, we find its index (handy for lengthy arrays)
+              --&gt;
+          
+              let index = fruits.indexOf("Honeycrisp Apple");
+
+              &lt;!-- if the array has "Honeycrisp Apple", we remove it --&gt;
+              &lt;!-- if index is -1, it doesn't exist in the array --&gt;
+              if (index > -1) {
+                fruits.splice(index, 1);
+              } else {
+                console.log("Honeycrisp Apple does not exist in the array.");
+              }
+            </code>
+          </pre>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Arrays</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Indexing</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <pre>
+            <code data-trim data-noescape>
+              &lt;!-- /exercises/05-js-array-indexing.html --&gt;                            
+              let fruits = ["Rambutan", "Mango", "Lansones", "Jackfruit"];
+
+              &lt;!-- returning by index (recall that we start at 0) --&gt;
+              console.log("My favorite fruit is: " + fruits[2]);
+
+              &lt;!-- looping through an array --&gt;
+              &lt;!-- arrays are objects! they have a property called length. --&gt;
+              for (let i = 0; i &lt; fruits.length; i++) {
+                console.log('fruits[' + i + '] is: ' + fruits[i]);
+              }
+            </code>
+          </pre>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Arrays</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span><code>filter()</code> and <code>map()</code></span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>Array functions are extremely handy!</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>You'll need these for working with data from APIs</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Recall that these functions return new arrays</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span><a href="https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d" target="_blank">Simplify your JS - Use map(), reduce() and filter()</a></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>Arrays</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span><code>filter()</code> and <code>map()</code></span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/06-js-array-functions.html --&gt;                               
+                    let fruits = [
+                      "Granny Smith Apple", 
+                      "Honeycrisp Apple", 
+                      "Fiji Apple", 
+                      "Gala Apple", 
+                      "Strawberry", 
+                      "Blackberry",
+                      "Raspberry", 
+                      "Yellow Nectarine", 
+                      "White Nectarine",
+                      "Navel Orange"
+                    ];
+
+                    &lt;!-- filter --&gt;
+                    let onlyApples = fruits.<mark>filter</mark>(function(fruit) {
+                      return fruit.indexOf("Apple") > -1;
+                    });
+
+                    console.log(onlyApples);
+
+                    &lt;!-- map --&gt;
+                    let editedFruits = fruits.<mark>map</mark>(function(fruit) {
+                      return fruit + "s are yummy";
+                    });
+
+                    console.log(editedFruits);
+                  </code>
+                </pre> 
+              </div>
+            </li>
+          </ul>
+          
         </div>
       </section>
 
@@ -217,31 +483,165 @@
         <h5>Objects</h5>
         <div class="sub-head">
           <div class="sub-head-text">
-            <span>A More Detailed Overview</span>
+            <span>Revisited</span>
           </div>
         </div>
         <div class="child-slide-body">
+            <ul class="child-slide-body-list">
+              <li>
+                <div class="list-item-container">
+                  +<span>Here's an example of an object with a function as a property</span>
+                </div>
+              </li>
+              <li>
+                <div class="list-item-container">
+                  +<span>The key is the name of the function, its value is the function definition</span>
+                </div>
+              </li>
+              <li>
+                <div class="list-item-container">
+                  +<span><code>this</code> refers to this particular object</span>
+                </div>
+              </li>
+              <li>
+                <div class="list-item-container">
+                  <pre>
+                    <code data-trim data-noescape>
+                      &lt;!-- /exercises/07-js-objects.html --&gt; 
+        
+                      let goldWinner = {
+                        name          : "Yuzuru Hanyu",
+                        occupation    : "Figure Skater",
+                        age           : 23,
+                        birthdate     : "December 7, 1994",
+                        height        : 68,
+                        recordsBroken : 12,
+        
+                        updateRecords : function(amt) {
+                          &lt;!-- What is 'this'? --&gt;
+                          this.recordsBroken += amt;
+                        }
+                      };
+                      
+                      goldWinner.updateRecords(3);
+                    </code>
+                  </pre>
+                </div>
+              </li>
+            </ul>
         </div>
       </section>
 
       <!-- ------------- -->
       <section class="child-slide">
-        <h5>Events & Interactivity</h5>
+        <h5>Objects</h5>
         <div class="sub-head">
           <div class="sub-head-text">
-            <span>Built-In Functions</span>
+            <span>Printing the to the console</span>
           </div>
         </div>
         <div class="child-slide-body">
+          <pre>
+            <code data-trim data-noescape>
+              &lt;!-- /exercises/07-js-objects.html --&gt; 
+
+              let goldWinner = {
+                name          : "Yuzuru Hanyu",
+                occupation    : "Figure Skater",
+                age           : 23,
+                birthdate     : "December 7, 1994",
+                height        : 68,
+                recordsBroken : 12,
+
+                updateRecords : function(amt) {
+                  this.recordsBroken += amt;
+                }
+              };
+              
+              &lt;!-- 
+                If you try this in the console you'll notice it won't work as
+                expected, you'll get goldWinner: [object Object]
+              --&gt;
+              
+              console.log('goldWinner: ' + goldWinner);
+
+              &lt;!-- You can use JSON.Stringify() to print the contents as a string --&gt;
+              console.log(JSON.stringify(goldWinner));
+
+              &lt;!-- Or you can use this to get an expandable object in the dev tools --&gt;
+              console.log('goldWinner:', goldWinner);
+            </code>
+          </pre>
         </div>
       </section>
 
       <!-- ------------- -->
       <section class="child-slide">
-        <h5>Dev Tools: Debugging in the Console</h5>
+        <h5>EventListeners & Interactivity</h5>
         <div class="sub-head">
           <div class="sub-head-text">
-            <span>How to see what's going on</span>
+            <span>Web API Built-In Functions</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          TODO: info about eventlisteners here
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>EventListeners & Interactivity</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Web API Built-In Functions</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <pre>
+            <code data-trim data-noescape>
+              &lt;body onload=&quot;init();&quot;&gt;
+                &lt;div id=&quot;interactive-div&quot;&gt;
+                  &lt;span id=&quot;click-text&quot;&gt;Click to change my color!&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/body&gt;
+            </code>
+          </pre>
+          <pre>
+            <code data-trim data-noescape>
+              &lt;!-- /exercises/08-js-events.html --&gt; 
+
+              let elem;
+
+              function init() {
+                elem = document.getElementById('interactive-div');
+                elem.onclick = sayHello;
+              }
+              
+              function sayHello() {
+                elem.style.background = getRandomColor();
+              }
+
+              &lt;!-- generate random hex values --&gt;
+              function getRandomColor() { 
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i &lt; 6; i++) {
+                  color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+              }
+              
+            </code>
+          </pre>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>BREAK TIME</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Go outside, stretch, grab dinner</span>
           </div>
         </div>
         <div class="child-slide-body">
@@ -281,51 +681,6 @@
           </div>
         </div>
         <div class="child-slide-body">
-        </div>
-      </section>
-      
-      <!-- ------------- -->
-      <section class="child-slide">
-        <h5>Variables, Scoping, & Control Flow</h5>
-        <div class="sub-head">
-          <div class="sub-head-text">
-            <span>Data types - Primitives</span>
-          </div>
-        </div>
-        <div class="child-slide-body">
-          <ul class="child-slide-body-list">
-            <li>
-              <div class="list-item-container">
-                +<span>Variables can hold any data, making Javascript a 'weakly typed' language </span>
-              </div>
-            </li>
-            <li>
-              <div class="list-item-container">
-                <pre>
-                  <code data-trim data-noescape>
-                    &lt;!-- /exercises/04-js-primitives.html --&gt;                            
-
-                    &lt;!-- Strings --&gt;
-                    let myMsg = "Hello, World!";
-
-                    &lt;!-- Numbers --&gt;
-                    let myPhoneNum = 123456789;
-                    myPhoneNum = "123456789";
-
-                    &lt;!-- Booleans --&gt;
-                    let isCatLady = true;
-
-                    &lt;!-- Null: is a value! --&gt;
-                    let age = null;
-
-                    &lt;!-- Undefined --&gt;
-                    let a;
-                    alert(a);
-                  </code>
-                </pre>
-              </div>
-            </li>
-          </ul>
         </div>
       </section>
      <!-- END SLIDES -->
