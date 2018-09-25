@@ -579,7 +579,7 @@
         <h5>Objects</h5>
         <div class="sub-head">
           <div class="sub-head-text">
-            <span><code>document, window, console</code>></span>
+            <span><code>document, window, console</code></span>
           </div>
         </div>
         <div class="child-slide-body">
@@ -664,6 +664,7 @@
         <div class="child-slide-body">
           <pre>
             <code data-trim data-noescape>
+              &lt;!-- /exercises/08-js-events.html --&gt; 
               &lt;body <mark>onload</mark>=&quot;init();&quot;&gt;
                 &lt;div id=&quot;interactive-div&quot;&gt;
                   &lt;span id=&quot;click-text&quot;&gt;Click to change my color!&lt;/span&gt;
@@ -718,10 +719,157 @@
         <h5>HTML5 Canvas API</h5>
         <div class="sub-head">
           <div class="sub-head-text">
+            <span>Getting started with <code>&lt;canvas&gt;</code></span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span><code>&lt;canvas&gt;</code> is just another HTML element</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Because of that, you can apply CSS to them</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>We use the canvas to draw graphics, both in 2D and 3D</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>You'll see in p5.js next week, with <code>createCanvas(400, 400);</code></span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span class="reading-indicator">REFERENCE: </span><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage" target="_blank">MDN Docs: Canvas API Basic Usage</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>HTML5 Canvas API</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Coordinate Systems</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <img class="child-slide-img" src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/03/1393985491canvas-coordinate-space.png" width="600" height="auto"/>
+        </div>
+      </section>
+
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>HTML5 Canvas API</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>Getting the context</span>
+          </div>
+        </div>
+        <div class="child-slide-body">
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>To get started with using the <code>&lt;canvas&gt;</code> we need to get its rendering context</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/09-js-canvas-intro.html --&gt; 
+                    &lt;body&gt;
+                      &lt;canvas id=&quot;my-canvas&quot;&gt;&lt;/canvas&gt;
+                    &lt;/body&gt;
+                  </code>
+                </pre>
+
+                <pre>
+                  <code data-trim data-noescape>
+                    &lt;!-- /exercises/09-js-canvas-intro.html --&gt; 
+                    let canvasElement = document.getElementById('my-canvas');
+                    let ctx = canvasElement.getContext('2d');
+                  </code>
+                </pre>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>HTML5 Canvas API</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
             <span>2D Drawing in the Canvas</span>
           </div>
         </div>
         <div class="child-slide-body">
+          
+          <div class="list-item-container">
+            <pre>
+              <code data-trim data-noescape>
+                &lt;!-- /exercises/09-js-canvas-intro.html --&gt;
+                canvasElem.width = 500;
+                canvasElem.height = 500;
+                
+                function draw() {
+                  &lt;!-- to set a background, we create a rect and fill it --&gt;
+                  ctx.fillStyle = "#520086";
+                  ctx.fillRect(0, 0, canvasElem.width, canvasElem.height);
+          
+                  &lt;!-- draw a circle --&gt;
+                  ctx.beginPath();
+                  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+                  ctx.fillStyle = "black";
+                  ctx.fill();
+          
+                  ctx.lineWidth = 2;
+                  ctx.strokeStyle = "#cfcfff";
+                  ctx.stroke();
+                }
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------- -->
+      <section class="child-slide">
+        <h5>HTML5 Canvas API</h5>
+        <div class="sub-head">
+          <div class="sub-head-text">
+            <span>2D Drawing in the Canvas</span>
+          </div>
+        </div>
+        <div class="child-slide-body"> 
+          <ul class="child-slide-body-list">
+            <li>
+              <div class="list-item-container">
+                +<span>If you have prior experience with p5.js, you'll notice how similar or familiar this is</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>Working with Canvas API can be tedious; it's a good idea to use libraries</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
+                +<span>However, it's still good to have an understanding of what's happening behind the scenes</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
