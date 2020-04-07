@@ -686,6 +686,11 @@
             </li>
             <li>
               <div class="list-item-container">
+                ~<span>There are many ways to capture events, but EventListeners are most flexible</span>
+              </div>
+            </li>
+            <li>
+              <div class="list-item-container">
                 ~<span class="reading-indicator">REFERENCE: </span><a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick" target="_blank">MDN Web Docs: GlobalEventHandlers</a>
               </div>
             </li>
@@ -710,7 +715,7 @@
           <pre>
             <code data-trim data-noescape>
               &lt;!-- /exercises/08-js-events.html --&gt;
-              &lt;body <mark>onload</mark>=&quot;init();&quot;&gt;
+              &lt;body&gt;
                 &lt;div id=&quot;interactive-div&quot;&gt;
                   &lt;span id=&quot;click-text&quot;&gt;Click to change my color!&lt;/span&gt;
                 &lt;/div&gt;
@@ -722,14 +727,13 @@
               &lt;!-- /exercises/08-js-events.html --&gt;
 
               let elem;
+              window.addEventListener('load', init);
 
               function init() {
                 elem = document.getElementById('interactive-div');
-                elem.<mark>onclick</mark> = sayHello;
-              }
-
-              function sayHello() {
-                elem.style.background = getRandomColor();
+                elem.addEventListener('click', function() {
+                  elem.style.background = getRandomColor();
+                });
               }
 
               &lt;!-- generate random hex values --&gt;
@@ -741,7 +745,6 @@
                 }
                 return color;
               }
-
             </code>
           </pre>
         </div>
